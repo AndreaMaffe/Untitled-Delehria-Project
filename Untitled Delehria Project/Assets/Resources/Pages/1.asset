@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8729e0b43ca982241b6e8cc38db4c58b, type: 3}
-  m_Name: Carrozza
+  m_Name: 1
   m_EditorClassIdentifier: 
   code: 1
   text: "\xC8 sera e piove.<br> Sei *1 <br> Sei in fervida attesa di arrivare a Rugginacque
@@ -38,7 +38,7 @@ MonoBehaviour:
       i continui sobbalzi delle ruote sul terreno. '
   - referenceTrait: GOAL
     outcomes:
-    - "vedere cosa la citt\xE0 ha da offrire."
+    - visitare la citta' e scoprire tutte le cose interessanti che nasconde.
     - "rivedere &4. Saranno almeno un paio d'anni che non vi vedete pi\xF9, chissa'
       se ti riconoscera'!"
     - sparire dalle strade per un po'. Tanto abbastanza da far dimenticare ai soldati
@@ -49,9 +49,8 @@ MonoBehaviour:
   - referenceTrait: NOMEAMICO
     outcomes: []
   choices:
-  - requirement: 
-    code: ATTENDI
-    text: Attendi
+  - code: ATTENDI
+    text: Attendi l'arrivo a Rugginacque
   interactiveObjects:
   - Kuz
   - Bosco

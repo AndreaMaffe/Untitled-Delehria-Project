@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         mainText.text = currentPage.getFinalText();
         foreach(Choice choice in page.choices)
         {
-            //if (requisiti rispettati)
+            
             {
                 GameObject newChoiceButton = Instantiate(choiceButton, choicesPanel.transform);
                 newChoiceButton.GetComponent<ChoiceButton>().ChoiceCode = choice.code;
@@ -145,11 +145,11 @@ public class GameManager : MonoBehaviour
 
     public void OnOKButtonPressed()
     {
-        SwitchToGameplay();
-
         Debug.Log("OK Button pressed!");
+
         if (CurrentAction != null && CurrentTarget != null)
         {
+            SwitchToGameplay();
             OnChoiceTaken(CurrentAction, CurrentTarget);
         }
 

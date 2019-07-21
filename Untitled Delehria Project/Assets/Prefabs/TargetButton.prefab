@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 729114745172134957}
   m_Layer: 5
   m_Name: TargetButton
-  m_TagString: ActionButton
+  m_TagString: TargetButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.37647063, g: 0.16470589, b: 0.09411766, a: 1}
     m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

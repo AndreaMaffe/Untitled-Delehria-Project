@@ -52,7 +52,7 @@ public struct TextVariant
 [System.Serializable]
 public struct Choice
 {
-    public string requirement;
+    //public string requirement;
     public string code;
     public string text;
 }

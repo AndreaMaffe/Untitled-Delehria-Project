@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8729e0b43ca982241b6e8cc38db4c58b, type: 3}
-  m_Name: TestPage
+  m_Name: 3
   m_EditorClassIdentifier: 
-  code: 5
-  text: FUNZIONAAAA
+  code: 3
+  text: "Ti schiarisci la gola per attirare l'attenzione di Kuz. <br>\"Bel tempo oggi,
+    vero?\" chiedi con sarcasmo. <br>Kuz ti guarda e ridacchia. \"Questa regione si
+    chiama Giornodipioggia\" dice, \"direi che \xE8 un nome appropriato\"."
   textVariants: []
-  choices: []
+  choices:
+  - code: AVANTI
+    text: Avanti
   interactiveObjects: []
   results: []

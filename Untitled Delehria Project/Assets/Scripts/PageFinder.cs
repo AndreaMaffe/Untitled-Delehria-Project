@@ -6,12 +6,13 @@ public class PageFinder
 {
     public static int GetNextPageCode(int currentPageCode, string choiceCode, string target)
     {
-
         switch(currentPageCode)
         {
             case 1: switch(choiceCode)
                 {
-                    case "ATTENDI": return 5; 
+                    case "ATTENDI": return 4;
+                    case "GUARDA": if (target == "KUZ") return 2; break;
+                    case "PARLA": if (target == "KUZ") return 3; break;
                 }
                 break;
 
