@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     private Object[] pages;
     public TextMeshProUGUI mainText;
 
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject interactiveElementsPanel;
 
     [Header("Parameters")]
+    public Page previousPage;
     public Page currentPage;
     [SerializeField]
     public string CurrentAction;
@@ -33,6 +36,15 @@ public class GameManager : MonoBehaviour
 
 
     private List<GameObject> createdObjects;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(this.gameObject);
+    }
 
     private void Start()
     {
@@ -69,6 +81,9 @@ public class GameManager : MonoBehaviour
     //setta il testo della currentPage e crea un choiceButton per ogni choice della currentPage
     public void SetPage(Page page)
     {
+        foreach (GameObject createdObject in createdObjects)
+            Destroy(createdObject);
+
         mainText.text = currentPage.getFinalText();
         foreach(Choice choice in page.choices)
         {
@@ -148,6 +163,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("SCELTA PRESA: [" + currentPage.name + "] ---> (" + choiceCode + ", " + target + ")");
         int newPageCode = PageFinder.GetNextPageCode(currentPage.code, choiceCode, target);
         Debug.Log("Codice prossima pagina: " + newPageCode);
+        previousPage = currentPage;
         currentPage = GetPageByCode(newPageCode);
         Debug.Log("Nome prossima pagina: " + currentPage.name);
         SetPage(currentPage);

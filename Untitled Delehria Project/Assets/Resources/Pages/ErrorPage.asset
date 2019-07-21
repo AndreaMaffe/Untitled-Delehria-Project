@@ -15,6 +15,9 @@ MonoBehaviour:
   code: -1
   text: 'ERROR: you haven''t programmed this path yet!'
   textVariants: []
-  choices: []
+  choices:
+  - requirement: 
+    code: INDIETRO
+    text: Torna all'ultima pagina sensata
   interactiveObjects: []
   results: []
