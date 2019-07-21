@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private Object[] pages;
     public Page currentPage;
     public TextMeshProUGUI mainText;
-    public GameObject button;
+    public GameObject choiceButton;
 
     [Header("Scenes")]
     public GameObject scenePresentation;
@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject choicesPanel;
     public GameObject objectsPanel;
     public GameObject interactiveElementsPanel;
+
+    public string CurrentAction { get; set; }
+    public string CurrentTarget { get; set; }
 
 
     private List<GameObject> createdObjects;
@@ -56,15 +59,20 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(traitName, actualValue);
     }
 
+    //setta il testo della currentPage e crea un choiceButton per ogni choice della currentPage
     public void SetPage(Page page)
     {
         mainText.text = currentPage.getFinalText();
         foreach(Choice choice in page.choices)
         {
             //if (requisiti rispettati)
-            GameObject newChoiceButton = Instantiate(button, choicesPanel.transform);
-            createdObjects.Add(newChoiceButton);
-            newChoiceButton.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = choice.text;
+            {
+                GameObject newChoiceButton = Instantiate(choiceButton, choicesPanel.transform);
+                newChoiceButton.GetComponent<ChoiceButton>().ChoiceCode = choice.code;
+                newChoiceButton.GetComponent<ChoiceButton>().GameManager = this;
+                createdObjects.Add(newChoiceButton);
+                newChoiceButton.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = choice.text;
+            }
         }
 
         foreach(string result in page.results)
@@ -73,6 +81,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //cancella tutti gli oggetti nella cache, lascia attiva solo la SceneGameplay e setta la pagina con code 1
     public void SwitchToGameplay()
     {
         foreach (GameObject createdObject in createdObjects)
@@ -110,22 +119,22 @@ public class GameManager : MonoBehaviour
 
         foreach(string interactiveObject in currentPage.interactiveObjects)
         {
-            GameObject newObjectButton = Instantiate(button, interactiveElementsPanel.transform);
+            GameObject newObjectButton = Instantiate(choiceButton, interactiveElementsPanel.transform);
             createdObjects.Add(newObjectButton);
             newObjectButton.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = interactiveObject;
         }
     }
 
-    public void OnChoiceTaken(int currentPageCode, string choiceCode)
+    public void OnChoiceTaken(string choiceCode)
     {
-        int newPageCode = PageFinder.GetNextPageCode(currentPageCode, choiceCode, null);
+        int newPageCode = PageFinder.GetNextPageCode(currentPage.code, choiceCode, null);
         currentPage = GetPage(newPageCode);
         SetPage(currentPage);
     }
 
-    public void OnChoiceTaken(int currentPageCode, string choiceCode, string target)
+    public void OnChoiceTaken(string choiceCode, string target)
     {
-        int newPageCode = PageFinder.GetNextPageCode(currentPageCode, choiceCode, target);
+        int newPageCode = PageFinder.GetNextPageCode(currentPage.code, choiceCode, target);
         currentPage = GetPage(newPageCode);
         SetPage(currentPage);
     }

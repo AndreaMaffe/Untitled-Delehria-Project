@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
-/*
+
 public class PlayerPrefsEditor : EditorWindow
 {
 
@@ -148,4 +148,4 @@ public class PlayerPrefsEditor : EditorWindow
 
     }
 
-}*/
+}

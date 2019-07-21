@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8729e0b43ca982241b6e8cc38db4c58b, type: 3}
   m_Name: TestPage
   m_EditorClassIdentifier: 
-  code: 0
-  text: Fa freddo e piove. Sei in cima al tuo carretto spaccato e ti guardi attorno
-    cercando un motivo per vivere. Sei veramente un tossico.
+  code: 5
+  text: FUNZIONAAAA
   textVariants: []
+  choices: []
+  interactiveObjects: []
+  results: []

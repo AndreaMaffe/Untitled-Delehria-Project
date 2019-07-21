@@ -53,6 +53,7 @@ public struct TextVariant
 public struct Choice
 {
     public string requirement;
+    public string code;
     public string text;
 }
 

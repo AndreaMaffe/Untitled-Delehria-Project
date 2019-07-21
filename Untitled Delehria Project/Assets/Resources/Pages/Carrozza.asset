@@ -50,7 +50,9 @@ MonoBehaviour:
     outcomes: []
   choices:
   - requirement: 
+    code: ATTENDI
     text: Attendi
   interactiveObjects:
   - Kuz
   - Bosco
+  results: []
