@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 3ecfe630806435e4280257e0ac1a5c28
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cyrodiil
+  fontNames:
+  - Cyrodiil
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 25b2a0a04e4ac714483a7c80a65e54d2, type: 3}
+  - {fileID: 12800000, guid: 117fd59aacff7cd4fa54c63b955e249d, type: 3}
+  - {fileID: 12800000, guid: 0cb4164ca546d1944b7a75ac24536754, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

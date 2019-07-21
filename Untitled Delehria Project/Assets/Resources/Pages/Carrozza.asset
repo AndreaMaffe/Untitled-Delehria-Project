@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8729e0b43ca982241b6e8cc38db4c58b, type: 3}
+  m_Name: Carrozza
+  m_EditorClassIdentifier: 
+  code: 1
+  text: "\xC8 sera e piove.<br> Sei *1 <br> Sei in fervida attesa di arrivare a Rugginacque
+    e *3"
+  textVariants:
+  - referenceTrait: RICCO
+    outcomes:
+    - "sdraiato in mezzo a casse e barili, sul retro di un carretto di legno, che
+      arranca con difficolt\xE0 sul selciato bagnato. Il carretto \xE8 guidato da
+      un certo Kuz, un mercante di pesce, che ha accettato di darti un passaggio fino
+      a Rugginacque per pochi spiccioli, senza fare troppe domande. Hai la schiena
+      a pezzi e il tanfo di anguilla che proviene dalle casse stipate attorno a te
+      inizia a darti la nausea."
+    - "sdraiato nel retro di un piccolo carro coperto, accoccolato sopra a un giaciglio
+      di paglia, e *2 Poco distante da te, siede un altro passeggero: il suo nome
+      \xE8 Kuz e, se non ricordi male, viene dal sud."
+    - comodamente seduto all'interno di un carro coperto, su un giaciglio imbottito
+      di piume d'oca, e *2 Il suono degli zoccoli dei cavalli, guidati dal tuo cocchiere
+      Kuz, ti concilia il sonno.
+  - referenceTrait: INTELLIGENTE
+    outcomes:
+    - "fumi con tranquillit\xE0 un piccolo rotolo di tabacco."
+    - giocherelli distrattamente con una moneta d'oro in attesa dell'arrivo.
+    - 'tenti di concentrarti sulle pagine del libro che stai leggendo, nonostante
+      i continui sobbalzi delle ruote sul terreno. '
+  - referenceTrait: GOAL
+    outcomes:
+    - "vedere cosa la citt\xE0 ha da offrire."
+    - "rivedere &4. Saranno almeno un paio d'anni che non vi vedete pi\xF9, chissa'
+      se ti riconoscera'!"
+    - sparire dalle strade per un po'. Tanto abbastanza da far dimenticare ai soldati
+      della Corona della tua faccia.
+    - fare quello che dev'essere fatto.<br>&4 deve morire.
+    - concludere l'affare con &4. Se tutto va bene, tornerai a casa con un bel gruzzolo.
+    - trovare &4.
+  - referenceTrait: NOMEAMICO
+    outcomes: []
+  choices:
+  - requirement: 
+    text: Attendi
+  interactiveObjects:
+  - Kuz
+  - Bosco
