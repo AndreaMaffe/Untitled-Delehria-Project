@@ -1180,7 +1180,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 0, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &164563633
 CanvasRenderer:
@@ -4668,9 +4668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff232fef788a1294093fe3be80a4ccd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPage: {fileID: 11400000, guid: 1d004da378924954385f41380084775f, type: 2}
   mainText: {fileID: 544118886}
   choiceButton: {fileID: 6775195617989969226, guid: 79d62fae29fb0c94a9066e4e991e2429,
+    type: 3}
+  actionButton: {fileID: 2616567063704570521, guid: 90b65b2f6b5b53a49b298c79a42d21c7,
+    type: 3}
+  targetButton: {fileID: 2616567063704570521, guid: 87cc9418563196942a95bb84a4f632e0,
     type: 3}
   scenePresentation: {fileID: 1650024089}
   sceneGameplay: {fileID: 1883406924}
@@ -4678,6 +4681,9 @@ MonoBehaviour:
   choicesPanel: {fileID: 1442211876}
   objectsPanel: {fileID: 821188848}
   interactiveElementsPanel: {fileID: 575322008}
+  currentPage: {fileID: 11400000, guid: 1d004da378924954385f41380084775f, type: 2}
+  CurrentAction: 
+  CurrentTarget: 
 --- !u!4 &651022098
 Transform:
   m_ObjectHideFlags: 0
@@ -7612,7 +7618,6 @@ GameObject:
   - component: {fileID: 1178139183}
   - component: {fileID: 1178139182}
   - component: {fileID: 1178139181}
-  - component: {fileID: 1178139184}
   m_Layer: 5
   m_Name: OKButton
   m_TagString: Untagged
@@ -7679,7 +7684,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1178139182}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 651022097}
+        m_MethodName: OnOKButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1178139182
@@ -7719,18 +7735,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178139179}
   m_CullTransparentMesh: 0
---- !u!114 &1178139184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178139179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7c4a1ee88bd70946a06460ce73ed744, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1212346719
 GameObject:
   m_ObjectHideFlags: 0
@@ -8942,6 +8946,7 @@ GameObject:
   - component: {fileID: 1417989076}
   - component: {fileID: 1417989075}
   - component: {fileID: 1417989074}
+  - component: {fileID: 1417989077}
   m_Layer: 5
   m_Name: TalkToButton
   m_TagString: ActionButton
@@ -8990,7 +8995,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.37647063, g: 0.16470589, b: 0.09411766, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -9008,7 +9013,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 803897977}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1417989077}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1417989075
@@ -9048,6 +9064,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417989072}
   m_CullTransparentMesh: 0
+--- !u!114 &1417989077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417989072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f4c67a44985fb4d9bf368997f820e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 651022097}
 --- !u!1 &1426117656
 GameObject:
   m_ObjectHideFlags: 0
@@ -10523,7 +10552,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 0, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1649918886
 CanvasRenderer:
@@ -13139,6 +13168,7 @@ GameObject:
   - component: {fileID: 2147417157}
   - component: {fileID: 2147417156}
   - component: {fileID: 2147417155}
+  - component: {fileID: 2147417158}
   m_Layer: 5
   m_Name: LookAtButton
   m_TagString: ActionButton
@@ -13187,7 +13217,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.37647063, g: 0.16470589, b: 0.09411766, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -13205,7 +13235,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1240100944}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2147417158}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2147417156
@@ -13245,3 +13286,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147417153}
   m_CullTransparentMesh: 0
+--- !u!114 &2147417158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147417153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f4c67a44985fb4d9bf368997f820e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 651022097}

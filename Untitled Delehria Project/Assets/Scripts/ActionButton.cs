@@ -5,7 +5,7 @@ using TMPro;
 
 public class ActionButton : MonoBehaviour
 {
-    public GameManager gameManager { get; set; }
+    public GameManager gameManager;
 
     public void OnClick()
     {

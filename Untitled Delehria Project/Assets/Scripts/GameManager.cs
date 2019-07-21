@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private Object[] pages;
-    public Page currentPage;
     public TextMeshProUGUI mainText;
+
+    [Header("Buttons")]
     public GameObject choiceButton;
+    public GameObject actionButton;
+    public GameObject targetButton;
 
     [Header("Scenes")]
     public GameObject scenePresentation;
@@ -21,8 +24,12 @@ public class GameManager : MonoBehaviour
     public GameObject objectsPanel;
     public GameObject interactiveElementsPanel;
 
-    public string CurrentAction { get; set; }
-    public string CurrentTarget { get; set; }
+    [Header("Parameters")]
+    public Page currentPage;
+    [SerializeField]
+    public string CurrentAction;
+    [SerializeField]
+    public string CurrentTarget;
 
 
     private List<GameObject> createdObjects;
@@ -89,22 +96,14 @@ public class GameManager : MonoBehaviour
 
         createdObjects.Clear();
 
-        try
-        {
-            if (scenePresentation.activeSelf)
-                scenePresentation.SetActive(false);
-        }
-        catch (System.NullReferenceException e) { }
+        if (scenePresentation.activeSelf)
+            scenePresentation.SetActive(false);
 
-        try
-        {
-            if (sceneOtherOptions.activeSelf)
-                sceneOtherOptions.SetActive(false);
-        }
-        catch (System.NullReferenceException e) { }
+        if (sceneOtherOptions.activeSelf)
+            sceneOtherOptions.SetActive(false);
 
         sceneGameplay.SetActive(true);
-        SetPage(GetPage(1));
+        SetPage(GetPageByCode(1));
     }
 
     public void SwitchToOtherOptions()
@@ -114,32 +113,47 @@ public class GameManager : MonoBehaviour
 
         createdObjects.Clear();
 
+        CurrentAction = null;
+        CurrentTarget = null;
+
         sceneGameplay.SetActive(false);
         sceneOtherOptions.SetActive(true);
 
         foreach(string interactiveObject in currentPage.interactiveObjects)
         {
-            GameObject newObjectButton = Instantiate(choiceButton, interactiveElementsPanel.transform);
+            GameObject newObjectButton = Instantiate(targetButton, interactiveElementsPanel.transform);
+            newObjectButton.GetComponent<TargetButton>().gameManager = this;
             createdObjects.Add(newObjectButton);
             newObjectButton.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = interactiveObject;
         }
     }
 
-    public void OnChoiceTaken(string choiceCode)
+    public void OnOKButtonPressed()
     {
-        int newPageCode = PageFinder.GetNextPageCode(currentPage.code, choiceCode, null);
-        currentPage = GetPage(newPageCode);
-        SetPage(currentPage);
+        SwitchToGameplay();
+
+        Debug.Log("OK Button pressed!");
+        if (CurrentAction != null && CurrentTarget != null)
+        {
+            OnChoiceTaken(CurrentAction, CurrentTarget);
+        }
+
+        else
+            Debug.LogError("Error: missing Action or Target!");
+        
     }
 
     public void OnChoiceTaken(string choiceCode, string target)
     {
+        Debug.Log("SCELTA PRESA: [" + currentPage.name + "] ---> (" + choiceCode + ", " + target + ")");
         int newPageCode = PageFinder.GetNextPageCode(currentPage.code, choiceCode, target);
-        currentPage = GetPage(newPageCode);
+        Debug.Log("Codice prossima pagina: " + newPageCode);
+        currentPage = GetPageByCode(newPageCode);
+        Debug.Log("Nome prossima pagina: " + currentPage.name);
         SetPage(currentPage);
     }
 
-    public Page GetPage(int pageCode)
+    public Page GetPageByCode(int pageCode)
     {
         foreach(var page in pages)
         {

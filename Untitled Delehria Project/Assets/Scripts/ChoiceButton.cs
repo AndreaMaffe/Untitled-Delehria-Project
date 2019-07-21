@@ -10,6 +10,6 @@ public class ChoiceButton : MonoBehaviour
 
     public void OnClick()
     {
-        GameManager.OnChoiceTaken(ChoiceCode);
+        GameManager.OnChoiceTaken(ChoiceCode, null);
     }
 }

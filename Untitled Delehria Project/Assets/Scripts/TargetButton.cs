@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class InteractiveElementButton : MonoBehaviour
+public class TargetButton : MonoBehaviour
 {
     public GameManager gameManager { get; set; }
 

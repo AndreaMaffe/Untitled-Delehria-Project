@@ -11,7 +11,7 @@ public class PageFinder
             case 1: switch(choiceCode)
                 {
                     case "ATTENDI": return 5;
-                    default: return 1;
+                    default: return -1;
                 }
 
 
@@ -25,7 +25,6 @@ public class PageFinder
 
 
 
-        Debug.LogError("Errore: impossibile calcolare il codice della prossima pagina");
-        return 0;
+        return -1;
     }
 }
